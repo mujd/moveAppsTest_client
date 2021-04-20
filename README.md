@@ -1,4 +1,4 @@
-# MoveApps Test - React.js y Redux Client
+# MoveApps Test - React.js, Redux y Tailwindcss Client
 
 ---
 
