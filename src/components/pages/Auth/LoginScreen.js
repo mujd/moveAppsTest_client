@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Link } from 'react-router-dom';
 import { loginAction } from '../../../actions/auth';
+import { removeError } from '../../../actions/ui';
 import { useForm } from '../../../hooks/useForm';
 import { ImSpinner2 } from '../../ui/icons';
 
@@ -10,9 +11,14 @@ export const LoginScreen = () => {
    const dispatch = useDispatch();
    const { loading, msgError } = useSelector((state) => state.ui);
    const [formValues, handleInputChange] = useForm({
-      email: 'max@gmail.com',
-      password: 'aA123456',
+      email: '',
+      password: '',
    });
+
+   useEffect(() => {
+      dispatch(removeError());
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+   }, []);
 
    const { email, password } = formValues;
 
@@ -29,7 +35,7 @@ export const LoginScreen = () => {
                {msgError}
             </div>
          )}
-         <form onSubmit={handleLogin} className="fadeIn">
+         <form onSubmit={handleLogin} className="fadeIn" noValidate>
             <div className="flex flex-col">
                <label
                   htmlFor="first_name"

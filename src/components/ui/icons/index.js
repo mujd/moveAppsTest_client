@@ -7,6 +7,8 @@ import BiTrash from './BiTrash';
 import BiUser from './BiUser';
 import ImSpinner2 from './ImSpinner2';
 import RiCloseLine from './RiCloseLine';
+import FaEyeSlash from './FaEyeSlash';
+import FaRegEye from './FaRegEye';
 
 export {
    BiLogOut,
@@ -18,4 +20,6 @@ export {
    BiUser,
    ImSpinner2,
    RiCloseLine,
+   FaEyeSlash,
+   FaRegEye,
 };

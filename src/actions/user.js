@@ -36,7 +36,6 @@ export const newUserAction = (user) => {
             headers: { Authorization: `Bearer ${token}` },
          };
          const resp = await clientAxios.post('/users', user, config);
-         console.log(resp);
          dispatch(newUser(resp?.data));
          dispatch(uiCloseModal());
          dispatch(getUsersAction());
@@ -92,14 +91,16 @@ export const updateUserAction = (id, user) => {
       if (!id) return;
       dispatch(startLoading());
       try {
-         // delete user.email;
-         console.log(id);
          const token = localStorage.getItem('token') || '';
          const config = {
             headers: { Authorization: `Bearer ${token}` },
          };
          await clientAxios.put(`/users/${id}`, user, config);
-         Swal.fire('Usuario Actualizado!', 'El usuario fue actualizado.', 'success');
+         Swal.fire(
+            'Usuario Actualizado!',
+            'El usuario fue actualizado.',
+            'success'
+         );
          dispatch(updateUser(id));
          dispatch(uiCloseModal());
          dispatch(getUsersAction());

@@ -39,7 +39,6 @@ export const UsersList = ({ users }) => {
             confirmButtonText: 'Si, Borralo!',
             cancelButtonText: 'No, dejemoslo',
          }).then((result) => {
-            console.log(result);
             if (result.value) {
                dispatch(deleteUserAction(user));
                // For more information about handling dismissals please visit

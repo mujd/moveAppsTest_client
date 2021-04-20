@@ -1,21 +1,34 @@
 /* eslint-disable no-restricted-globals */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { useForm } from '../../../hooks/useForm';
-import { BiPlus, BiTrash, ImSpinner2 } from '../../ui/icons';
+import {
+   BiPlus,
+   BiTrash,
+   FaEyeSlash,
+   FaRegEye,
+   ImSpinner2,
+} from '../../ui/icons';
 import { chileanPhoneCityCode } from '../../../data/phoneCityCode';
 import { phoneCountryCodes } from '../../../data/phoneCountryCodes';
 import { registerAction } from '../../../actions/auth';
 import { newUserAction, updateUserAction } from '../../../actions/user';
 import { useFormErrors } from '../../../hooks/useFormErrors';
+import { removeError } from '../../../actions/ui';
 
 export const RegisterScreen = ({ fromModal = false }) => {
    const dispatch = useDispatch();
+   const [showPassword, setShowPassword] = useState(false);
    const { loading, msgError } = useSelector((state) => state.ui);
    const { activeUser } = useSelector((state) => state.user);
    const phones = activeUser?.phones?.map((phone) => phone);
+
+   useEffect(() => {
+      dispatch(removeError());
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+   }, []);
 
    const [phoneList, setPhoneList] = useState(
       phones
@@ -221,16 +234,25 @@ export const RegisterScreen = ({ fromModal = false }) => {
                   className="block text-sm font-medium text-gray-700 mb-1">
                   Password
                </label>
-               <input
-                  className="mb-3 borde focus:ring-gray-500 focus:border-gray-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-sm"
-                  type="password"
-                  placeholder="Password"
-                  name="password"
-                  autoComplete="off"
-                  value={password}
-                  onChange={handleInputChange}
-                  onBlur={validatePassword}
-               />
+               <div className="relative rounded-md shadow-sm mb-3">
+                  <input
+                     className="borde focus:ring-gray-500 focus:border-gray-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-sm"
+                     type={showPassword ? 'text' : 'password'}
+                     placeholder="Password"
+                     name="password"
+                     autoComplete="off"
+                     value={password}
+                     onChange={handleInputChange}
+                     onBlur={validatePassword}
+                  />
+                  <div className="absolute inset-y-0 right-0 flex items-center">
+                     <button
+                        className="btn-icon btn-transparent"
+                        onClick={() => setShowPassword(!showPassword)}>
+                        {showPassword ? <FaEyeSlash /> : <FaRegEye />}
+                     </button>
+                  </div>
+               </div>
                {formErrors?.password && (
                   <span className="text-red-500 text-sm">
                      {formErrors?.password}
@@ -243,16 +265,25 @@ export const RegisterScreen = ({ fromModal = false }) => {
                   className="block text-sm font-medium text-gray-700 mb-1">
                   Confirmar Password
                </label>
-               <input
-                  className="mb-3 borde focus:ring-gray-500 focus:border-gray-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-sm"
-                  type="password"
-                  placeholder="Password"
-                  name="password2"
-                  autoComplete="off"
-                  value={password2}
-                  onChange={handleInputChange}
-                  onBlur={validatePassword}
-               />
+               <div className="relative rounded-md shadow-sm mb-3">
+                  <input
+                     className="borde focus:ring-gray-500 focus:border-gray-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-sm"
+                     type={showPassword ? 'text' : 'password'}
+                     placeholder="Password"
+                     name="password2"
+                     autoComplete="off"
+                     value={password2}
+                     onChange={handleInputChange}
+                     onBlur={validatePassword}
+                  />
+                  <div className="absolute inset-y-0 right-0 flex items-center">
+                     <button
+                        className="btn-icon btn-transparent"
+                        onClick={() => setShowPassword(!showPassword)}>
+                        {showPassword ? <FaEyeSlash /> : <FaRegEye />}
+                     </button>
+                  </div>
+               </div>
             </div>
 
             <button
