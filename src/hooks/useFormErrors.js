@@ -9,9 +9,6 @@ export const useFormErrors = (formValues = [], phoneList = []) => {
    });
 
    const validatePassword = () => {
-      const PASS_REGEX = new RegExp(
-         /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z]{8,}$/
-      );
       const uppercase = /[A-Z]/;
       const lowercase = /[a-z]/;
       const number = /(.*[0-9]{2,2})/;
