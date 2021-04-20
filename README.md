@@ -1,4 +1,4 @@
-# MoveApps Test - React.js Client
+# MoveApps Test - React.js y Redux Client
 
 ---
 
