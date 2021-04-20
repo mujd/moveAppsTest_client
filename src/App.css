@@ -1,38 +1,134 @@
-.App {
-  text-align: center;
+body,
+html {
+   height: 100%;
+   box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+   @apply bg-gray-100;
+   color: #333;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.fadeIn {
+   animation: fadeIn 700ms;
+   -webkit-animation: fadeIn 700ms;
+   -moz-animation: fadeIn 700ms;
+   -o-animation: fadeIn 700ms;
+   -ms-animation: fadeIn 700ms;
+}
+@keyframes fadeIn {
+   0% {
+      opacity: 0;
+   }
+   100% {
+      opacity: 1;
+   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+@-moz-keyframes fadeIn {
+   0% {
+      opacity: 0;
+   }
+   100% {
+      opacity: 1;
+   }
 }
 
-.App-link {
-  color: #61dafb;
+@-webkit-keyframes fadeIn {
+   0% {
+      opacity: 0;
+   }
+   100% {
+      opacity: 1;
+   }
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@-o-keyframes fadeIn {
+   0% {
+      opacity: 0;
+   }
+   100% {
+      opacity: 1;
+   }
+}
+
+@-ms-keyframes fadeIn {
+   0% {
+      opacity: 0;
+   }
+   100% {
+      opacity: 1;
+   }
+}
+.btn-icon {
+   @apply bg-red-100 flex justify-center items-center p-1 h-8 w-8 border border-transparent shadow-sm text-sm font-medium rounded-sm text-gray-700 focus:outline-none outline-none;
+}
+.btn {
+   @apply inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-sm text-white focus:outline-none outline-none;
+}
+
+.btn-primary {
+   @apply bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 text-white;
+}
+
+.btn-danger {
+   @apply bg-red-600 hover:bg-red-700 focus:ring-red-500 text-white;
+}
+
+.btn-success {
+   @apply bg-green-600 hover:bg-green-700 focus:ring-green-500 text-white;
+}
+
+.btn-dark {
+   @apply bg-gray-600 hover:bg-gray-700 focus:ring-gray-500 text-white;
+}
+
+.btn-light {
+   @apply bg-gray-100 hover:bg-gray-200 focus:ring-gray-500 text-gray-700;
+}
+.btn-transparent {
+   @apply bg-transparent text-gray-700;
+}
+
+/* Modal */
+.ReactModalPortal > div {
+   opacity: 0;
+}
+
+.ReactModalPortal .ReactModal__Overlay {
+   align-items: center;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   transition: opacity 0.2s ease-in-out;
+   z-index: 999;
+}
+
+.modal-fondo {
+   background-color: rgba(0, 0, 0, 0.3);
+   bottom: 0;
+   left: 0;
+   right: 0;
+   top: 0;
+   position: fixed;
+}
+
+.ReactModalPortal .ReactModal__Overlay--after-open {
+   opacity: 1;
+}
+
+.ReactModalPortal .ReactModal__Overlay--before-close {
+   opacity: 0;
+}
+
+.modal {
+   background: white;
+   border-radius: 5px;
+   color: rgb(51, 51, 51);
+   display: inline;
+   max-height: 620px;
+   max-width: 500px;
+   outline: none;
+   padding: 10px;
+   width: 100% !important;
 }
